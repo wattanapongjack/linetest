@@ -7,8 +7,6 @@ $access_token  = '3XZyLqGB2iDayn7DrbwzEIyouwUuNfBIOfnAayMWBo0flDU9ENfFwmjWgfZDQf
 
 $bot = new BOT_API($channelSecret, $access_token);
 	
-if (!empty($bot->isEvents)) {
-		
     $bot->sendMessageNew('U203ddb078917d926c57b729b80fcd161', 'สวัสดี');
 
     if ($bot->isSuccess()) {
@@ -19,5 +17,3 @@ if (!empty($bot->isEvents)) {
     // Failed
     echo $bot->response->getHTTPStatus . ' ' . $bot->response->getRawBody(); 
     exit();
-
-}
