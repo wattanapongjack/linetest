@@ -3,7 +3,7 @@
 include ('line-bot-api/php/line-bot.php');
 
 $channelSecret = '4564cf17f6fb37094b3b4681261cab10';
-$access_token  = 'BT57H8u2tbx1NEwXaZ9a4JayoEaq59372ZHfLqg2oWYF2WwgxjJcJ51kh9zfSKqpec1cWlpKQXgD2UQGFqxydiL/PKamS7lTS0XXJSh+x9kiNkQWOfY4Dj86TyI4wBmYOhAQk6/eI33YSVudq0TfxQdB04t89/1O/w1cDnyilFU=';
+$access_token  = '3XZyLqGB2iDayn7DrbwzEIyouwUuNfBIOfnAayMWBo0flDU9ENfFwmjWgfZDQfw+ec1cWlpKQXgD2UQGFqxydiL/PKamS7lTS0XXJSh+x9l8ntX3Aj0sbc0fCDvSNBbAfZNuiPmqkSp08bBy7b/LgQdB04t89/1O/w1cDnyilFU=';
 
 $bot = new BOT_API($channelSecret, $access_token);
 	
