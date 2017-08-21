@@ -9,7 +9,7 @@ $bot = new BOT_API($channelSecret, $access_token);
 	
 if (!empty($bot->isEvents)) {
 		
-    $bot->replyMessageNew($bot->replyToken, $bot->message);
+    $bot->replyMessageNew($bot->replyToken, 'thanks');
 
     if ($bot->isSuccess()) {
         echo 'Succeeded!';
