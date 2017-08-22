@@ -90,13 +90,15 @@ class BOT_API extends LINEBot {
     }
 	
     public function replyMessageNew ($replyToken = null, $message = null) {
-        $messageBuilder = new TextMessageBuilder($message);
+        $messageTxt = json_decode($message);
+        $mt = json_encode($messageTxt->text);
+        $messageBuilder = new TextMessageBuilder($mt);
         $this->response = $this->httpClient->post($this->endpointBase . '/v2/bot/message/reply', [
             'replyToken' => $replyToken,
             'messages'   => $messageBuilder->buildMessage()
         ]);
     }
-    
+
     public function isSuccess () {
         return !empty($this->response->isSucceeded()) ? true : false;
     }

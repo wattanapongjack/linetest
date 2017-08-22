@@ -1,20 +1,26 @@
 <?php
-$access_token = '3XZyLqGB2iDayn7DrbwzEIyouwUuNfBIOfnAayMWBo0flDU9ENfFwmjWgfZDQfw+ec1cWlpKQXgD2UQGFqxydiL/PKamS7lTS0XXJSh+x9l8ntX3Aj0sbc0fCDvSNBbAfZNuiPmqkSp08bBy7b/LgQdB04t89/1O/w1cDnyilFU=';
 
-// Get POST body content
-$content = file_get_contents('php://input');
-// Parse JSON
-$events = json_decode($content, true);
-// Validate parsed JSON data
+include ('line-bot.php');
 
-	// Loop through each event
-	foreach ($events['events'] as $event) {
-		// Reply only when message sent is in 'text' format
-		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-			// Get text sent
-			$text = $event['message']['text'];
-			echo $text;
-		}
-	}
+$channelSecret = '4564cf17f6fb37094b3b4681261cab10';
+$access_token  = '3XZyLqGB2iDayn7DrbwzEIyouwUuNfBIOfnAayMWBo0flDU9ENfFwmjWgfZDQfw+ec1cWlpKQXgD2UQGFqxydiL/PKamS7lTS0XXJSh+x9l8ntX3Aj0sbc0fCDvSNBbAfZNuiPmqkSp08bBy7b/LgQdB04t89/1O/w1cDnyilFU=';
 
-echo "OK";
+$bot = new BOT_API($channelSecret, $access_token);
+	
+if (!empty($bot->isEvents)) {
+
+    $bot->replyMessageNew($bot->replyToken, json_encode($bot->message, JSON_UNESCAPED_UNICODE));
+    // $bot->sendMessageNew('U203ddb078917d926c57b729b80fcd161', 'สวัสดี');
+
+    if ($bot->isSuccess()) {
+        echo 'Succeeded!';
+        exit();
+    }
+
+    // Failed
+    echo $bot->response->getHTTPStatus . ' ' . $bot->response->getRawBody(); 
+    exit();
+
+}
+
+echo "ok! go";
