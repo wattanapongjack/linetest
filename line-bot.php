@@ -44,7 +44,7 @@ class BOT_API extends LINEBot {
     public function __construct ($channelSecret, $access_token) {
 
         $log = new Logger('name');
-        $log->pushHandler(new StreamHandler('test.log', Logger::WARNING));
+        $log->pushHandler(new StreamHandler('./test.log', Logger::WARNING));
         $log->warning('Foo');
 		
         $this->httpClient     = new CurlHTTPClient($access_token);
@@ -97,7 +97,7 @@ class BOT_API extends LINEBot {
     }
 	
     public function replyMessageNew ($replyToken = null, $message = null) {
-        $messageBuilder = new TextMessageBuilder($message['text']);
+        $messageBuilder = new TextMessageBuilder($message);
         $this->response = $this->httpClient->post($this->endpointBase . '/v2/bot/message/reply', [
             'replyToken' => $replyToken,
             'messages'   => $messageBuilder->buildMessage()
