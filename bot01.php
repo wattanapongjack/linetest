@@ -10,7 +10,7 @@ $bot = new BOT_API($channelSecret, $access_token);
 if (!empty($bot->isEvents)) {
 
     $bot->replyMessageNew($bot->replyToken, json_encode($bot, JSON_UNESCAPED_UNICODE));
-    // $bot->sendMessageNew('U203ddb078917d926c57b729b80fcd161', 'สวัสดี');
+    $bot->sendMessageNew('U203ddb078917d926c57b729b80fcd161', json_encode($bot, JSON_UNESCAPED_UNICODE));
 
     if ($bot->isSuccess()) {
         echo 'Succeeded!';
