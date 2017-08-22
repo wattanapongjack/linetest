@@ -17,4 +17,5 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
+echo $content;
 echo "OK";
