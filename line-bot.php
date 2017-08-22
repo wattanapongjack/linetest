@@ -10,6 +10,7 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Handler\FirePHPHandler;
 
 class BOT_API extends LINEBot {
 
@@ -43,9 +44,14 @@ class BOT_API extends LINEBot {
 	
     public function __construct ($channelSecret, $access_token) {
 
-        $log = new Logger('name');
-        $log->pushHandler(new StreamHandler('/php/test.log', Logger::WARNING));
-        $log->warning('Foo');
+        // Create the logger
+        $logger = new Logger('my_logger');
+        // Now add some handlers
+        $logger->pushHandler(new StreamHandler(__DIR__.'/test.log', Logger::DEBUG));
+        $logger->pushHandler(new FirePHPHandler());
+
+        // You can now use your logger
+        $logger->info('My logger is now ready');
 		
         $this->httpClient     = new CurlHTTPClient($access_token);
         $this->channelSecret  = $channelSecret;
