@@ -97,7 +97,7 @@ class BOT_API extends LINEBot {
         // Create the logger
         $logger = new Logger('my_logger');
         // Now add some handlers
-        $logger->pushHandler(new StreamHandler('/test.log', Logger::DEBUG));
+        $logger->pushHandler(new StreamHandler(__DIR__.'/test.log', Logger::DEBUG));
         $logger->pushHandler(new FirePHPHandler());
 
         // You can now use your logger
