@@ -44,7 +44,7 @@ class BOT_API extends LINEBot {
     public function __construct ($channelSecret, $access_token) {
 
         $log = new Logger('name');
-        $log->pushHandler(new StreamHandler('./test.log', Logger::WARNING));
+        $log->pushHandler(new StreamHandler('/php/test.log', Logger::WARNING));
         $log->warning('Foo');
 		
         $this->httpClient     = new CurlHTTPClient($access_token);
