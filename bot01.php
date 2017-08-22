@@ -5,7 +5,6 @@ $access_token = '3XZyLqGB2iDayn7DrbwzEIyouwUuNfBIOfnAayMWBo0flDU9ENfFwmjWgfZDQfw
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
-echo $events;
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
@@ -14,14 +13,13 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			$text = $event['message']['text'];
-            echo $text;
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
             $messages = [
                 'type' => 'text',
-                'text' => $text
+                'text' => $text . 'อะไรหรอ'
             ];
 
 			// Make a POST Request to Messaging API to reply to sender
