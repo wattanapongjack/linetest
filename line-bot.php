@@ -91,11 +91,9 @@ class BOT_API extends LINEBot {
 	
     public function replyMessageNew ($replyToken = null, $message = null) {
         $messageBuilder = new TextMessageBuilder($message);
-        $messageB = $messageBuilder->buildMessage();
-        $messageText =  substr($messageB, 1, strlen($messageB) - 1);
         $this->response = $this->httpClient->post($this->endpointBase . '/v2/bot/message/reply', [
             'replyToken' => $replyToken,
-            'messages'   => $messageText
+            'messages'   => $messageBuilder
         ]);
     }
 	
@@ -103,19 +101,19 @@ class BOT_API extends LINEBot {
         return !empty($this->response->isSucceeded()) ? true : false;
     }
 	
-    // public static function verify ($access_token) {
+    public static function verify ($access_token) {
 		
-    //     $ch = curl_init('https://api.line.me/v1/oauth/verify');
+        $ch = curl_init('https://api.line.me/v1/oauth/verify');
 		
-    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    //     curl_setopt($ch, CURLOPT_HTTPHEADER, [ 'Authorization: Bearer ' . $access_token ]);
-    //     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [ 'Authorization: Bearer ' . $access_token ]);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 
-    //     $result = curl_exec($ch);
-    //     curl_close($ch);
+        $result = curl_exec($ch);
+        curl_close($ch);
 
-    //     return json_decode($result);
+        return json_decode($result);
 		
-    // }
+    }
 	
 }
