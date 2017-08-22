@@ -92,9 +92,13 @@ class BOT_API extends LINEBot {
     public function replyMessageNew ($replyToken = null, $message = null) {
         $messageBuilder = new TextMessageBuilder($message);
         $mm = $messageBuilder->buildMessage();
+        $messages = [
+				'type' => 'text',
+				'text' =>'222' 
+			];
         $this->response = $this->httpClient->post($this->endpointBase . '/v2/bot/message/reply', [
             'replyToken' => $replyToken,
-            'messages'   => $mm['text']
+            'messages'   => $messages
         ]);
     }
 	
