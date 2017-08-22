@@ -8,10 +8,6 @@ use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use \LINE\LINEBot\MessageBuilder;
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
-use Monolog\Handler\FirePHPHandler;
-
 class BOT_API extends LINEBot {
 
     /* ====================================================================================
@@ -94,15 +90,6 @@ class BOT_API extends LINEBot {
     }
 	
     public function replyMessageNew ($replyToken = null, $message = null) {
-        // Create the logger
-        $logger = new Logger('my_logger');
-        // Now add some handlers
-        $logger->pushHandler(new StreamHandler('test.log', Logger::DEBUG));
-        $logger->pushHandler(new FirePHPHandler());
-
-        // You can now use your logger
-        $logger->info('My logger is now ready');
-
         $messageBuilder = new TextMessageBuilder($message);
         $this->response = $this->httpClient->post($this->endpointBase . '/v2/bot/message/reply', [
             'replyToken' => $replyToken,
