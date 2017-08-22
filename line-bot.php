@@ -8,8 +8,11 @@ use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use \LINE\LINEBot\MessageBuilder;
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
 class BOT_API extends LINEBot {
-	
+
     /* ====================================================================================
      * Variable
      * ==================================================================================== */
@@ -39,6 +42,10 @@ class BOT_API extends LINEBot {
      * ==================================================================================== */
 	
     public function __construct ($channelSecret, $access_token) {
+
+        $log = new Logger('name');
+        $log->pushHandler(new StreamHandler('test.log', Logger::WARNING));
+        $log->warning('Foo');
 		
         $this->httpClient     = new CurlHTTPClient($access_token);
         $this->channelSecret  = $channelSecret;
