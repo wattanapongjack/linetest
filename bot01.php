@@ -21,12 +21,4 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
 // }
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-$response = $bot->replyMessage($bot->replyToken, $textMessageBuilder);
-if ($response->isSucceeded()) {
-    echo 'Succeeded!';
-    return;
-}
-
-// Failed
-echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+$response = $bot->replyText($bot->replytoken, 'hello!');
