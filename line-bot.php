@@ -97,6 +97,10 @@ class BOT_API extends LINEBot {
         ]);
     }
 
+    public function getMessageContent($messageId = null){
+        return $this->httpClient->get($this->endpointBase . '/v2/bot/message/' . urlencode($messageId) . '/content');
+    }
+	
     public function isSuccess () {
         return !empty($this->response->isSucceeded()) ? true : false;
     }
