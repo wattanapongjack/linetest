@@ -96,10 +96,10 @@ class BOT_API extends LINEBot {
 				'type' => 'text',
 				'text' =>'222' 
 			];
-        $this->response = $this->httpClient->post($this->endpointBase . '/v2/bot/message/reply', [
+        $this->response = $this->httpClient->post($this->endpointBase . '/v2/bot/message/reply', json_encode([
             'replyToken' => $replyToken,
             'messages'   => $messages
-        ]);
+        ]));
     }
 	
     public function isSuccess () {
