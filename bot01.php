@@ -8,8 +8,10 @@ $access_token  = '3XZyLqGB2iDayn7DrbwzEIyouwUuNfBIOfnAayMWBo0flDU9ENfFwmjWgfZDQf
 $bot = new BOT_API($channelSecret, $access_token);
 	
 if (!empty($bot->isEvents)) {
-		
-    $bot->replyMessageNew($bot->replyToken, json_encode($bot->message, JSON_UNESCAPED_UNICODE));
+    
+	if ($bot->message->type == "text") {	
+        $bot->replyMessageNew($bot->replyToken, json_encode($bot->message, JSON_UNESCAPED_UNICODE));
+    }
     // $bot->sendMessageNew('U203ddb078917d926c57b729b80fcd161', 'สวัสดี');
 
     if ($bot->isSuccess()) {
